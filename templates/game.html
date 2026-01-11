@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Game{% endblock %}
+
+{% block content %}
+<div class="ms-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item active">{{ game.name }}</li>
+        </ol>
+    </nav>
+</div>
+
+
+<div class="card shadow-sm border-0 p-4 bg-orange-subtle">
+    <div class="row align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="{{ game.cover }}" alt="{{ game.name }}" class="img-fluid rounded shadow"
+                style="max-height: 400px;">
+        </div>
+        <div class="col-md-7">
+            <h1 class="display-5 fw-bold">{{ game.name }}</h1>
+            <hr>
+            <div class="d-flex gap-3 my-4">
+                <div class="p-3 bg-light border rounded text-center">
+                    <small class="text-muted d-block">Lowest Price</small>
+                    <span class="h4 text-success">$ {{ prices.lowest }} USD</span>
+                </div>
+                <div class="p-3 bg-light border rounded text-center">
+                    <small class="text-muted d-block">Highest Price</small>
+                    <span class="h4 text-danger">$ {{ prices.highest }} USD</span>
+                </div>
+            </div>
+            <p class="lead text-secondary">{{ game.description|safe }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
